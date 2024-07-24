@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   
   
     config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "ansible/playbook.yml" # запуск плейбука 
+      ansible.playbook = "playbooks/apache.yml" # запуск плейбука 
       ansible.extra_vars = {
         ansible_python_interpreter: "/usr/bin/python3" # интерпретатор используемый ансиблом 
       }
