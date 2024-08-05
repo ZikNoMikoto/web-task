@@ -1,0 +1,26 @@
+---
+- name: install and creat webserver nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: chek is nginx is install
+      apt:
+        name: nginx
+        state: present
+
+    - name: create index.html  "Hello World"
+      copy:
+        content: |
+          <html>
+          <head><title>Hello World</title></head>
+          <body>
+            <h1>Hello World</h1>
+          </body>
+          </html>
+        dest: /var/www/html/index.html
+
+    - name: Nginx is running 777
+      service:
+       name: nginx
+       state: started
